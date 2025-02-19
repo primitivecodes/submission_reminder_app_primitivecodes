@@ -1,12 +1,11 @@
 #!/bin/bash
 
-#Ask for the user"s name to create a personalized directory
-read -p "Enter your name: " username
+#Ask user to enter username
+read -p "Enter your username: " username
 mkdir -p "submission_reminder_$username"
 cd "submission_reminder_$username"
  
-
-#make the first file
+#Create first repository inside submission_reminder_$username with it's file and add contents
 mkdir -p modules
 cat > modules/functions.sh << 'EOF'
 #!/bin/bash
@@ -31,10 +30,10 @@ function check_submissions {
 }
 EOF
 
-#make it executable
+#make file within repository be executable
 chmod +x modules/functions.sh
 
-#creating the second file
+#creating the second directory under submission_reminder_$username with it's file and content within the file
 mkdir -p assets
 cat > assets/submissions.txt << 'EOF'
 Student, assignment, submission status
@@ -50,10 +49,10 @@ Malle, Intro to Linux, submitted
 Nnamdi, Shell Loops, not submitted
 EOF
 
-#make it executable
+#make file within directory be executable
 chmod +x assets/submissions.txt
 
-#creating the third  file
+#creating the third directory under submission_reminder_$usernmae with it's file and content within the file
 mkdir -p config
 cat > config/config.env << 'EOF'
 # This is the config file
@@ -61,10 +60,10 @@ ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 EOF
 
-#make it executable
+#make file within directory be executable
 chmod +x config/config.env
 
-#creating the fourth file
+#creating the fourth directory under submission_reminder_$username
 mkdir -p app
 cat > app/reminder.sh << 'EOF'
 #!/bin/bash
@@ -84,16 +83,17 @@ echo "--------------------------------------------"
 check_submissions $submissions_file
 EOF
 
-#make it executable
+#makefile within that repository be executable
 chmod +x app/reminder.sh
 
-#create the last file
+#Create startup file to run remainder file under app directory
 cat > startup.sh << 'EOF'
 #!/bin/bash
 cd app
 ./reminder.sh
 EOF
 
+#make startup file executable
 chmod +x startup.sh
 
-echo "Environment successfully setup"
+echo "All work done successfully under directory named create_reminder_$username"

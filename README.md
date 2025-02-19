@@ -1,1 +1,1 @@
-pwd
+Write a shell script named create_environment.sh that sets up the directory structure for an application called submission_reminder_app. Your script should create the necessary directories and files to simulate a real-world application environment. The application's source code will be provided as part of the assignment.
